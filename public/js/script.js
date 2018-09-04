@@ -30,6 +30,9 @@ $(function() {
     $("#eodDateRange").daterangepicker({
     	startDate: start,
         endDate: end,
+        locale: {
+	      format: 'DD/MM/YYYY'
+	    },
         ranges: {
            'Today': [moment(), moment()],
            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -43,6 +46,9 @@ $(function() {
     $("#ieodDateRange").daterangepicker({
     	startDate: start,
         endDate: end,
+        locale: {
+	      format: 'DD/MM/YYYY'
+	    },
         ranges: {
            'Today': [moment(), moment()],
            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -52,6 +58,18 @@ $(function() {
            //'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
         }
     });
+
+
+    $('#eodDateRange').on('apply.daterangepicker', function(ev, picker) {
+	  console.log(picker.startDate.format('YYYY-MM-DD') + ":::" + moment(picker.startDate.format('YYYY-MM-DD')).unix());
+	  console.log(moment().subtract(29, 'days').format('YYYY-MM-DD') + ":::" + moment(moment().subtract(29, 'days').format('YYYY-MM-DD')).unix());
+	  //$('#eodDateRange').val('');
+
+	 //  if(startDateEpoch > last30DayEpoch || endDateEpoch > last30DayEpoch) {
+		// alert("You can't select the date more than last 30 days");
+		// return false;
+	 //  }
+	});
 });
 
 function logout()
@@ -129,8 +147,17 @@ function getEOD()
 	var eodDateArr = eodDateRange.split("-");
 	var startDateArr = eodDateArr[0].trim().split("/");
 	var endDateArr = eodDateArr[1].trim().split("/");
-	var startDate = startDateArr[2] + startDateArr[0] + startDateArr[1];
-	var endDate = endDateArr[2] + endDateArr[0] + endDateArr[1];
+	var startDate = startDateArr[2] + startDateArr[1] + startDateArr[0];
+	var endDate = endDateArr[2] + endDateArr[1] + endDateArr[0];
+
+	var last30DayEpoch = moment(moment().subtract(29, 'days').format('YYYY-MM-DD')).unix();
+	var startDateEpoch = moment(eodDateArr[0].trim(), "DD-MM-YYYY").unix();
+	var endDateEpoch = moment(eodDateArr[1].trim(), "DD-MM-YYYY").unix();
+
+	if(startDateEpoch < last30DayEpoch || endDateEpoch < last30DayEpoch) {
+		alert("You can't select the date more than last 30 days");
+		return false;
+	}
 
 	$.ajax({
 		type: "POST",
@@ -155,12 +182,21 @@ function getIEOD()
 {
 	var token = $("#ieodToken option:selected").val();
 	var noOfDays = 0;
-	var eodDateRange = $("#ieodDateRange").val();
-	var eodDateArr = eodDateRange.split("-");
-	var startDateArr = eodDateArr[0].trim().split("/");
-	var endDateArr = eodDateArr[1].trim().split("/");
-	var startDate = startDateArr[2] + startDateArr[0] + startDateArr[1];
-	var endDate = endDateArr[2] + endDateArr[0] + endDateArr[1];
+	var ieodDateRange = $("#ieodDateRange").val();
+	var ieodDateArr = ieodDateRange.split("-");
+	var startDateArr = ieodDateArr[0].trim().split("/");
+	var endDateArr = ieodDateArr[1].trim().split("/");
+	var startDate = startDateArr[2] + startDateArr[1] + startDateArr[0];
+	var endDate = endDateArr[2] + endDateArr[1] + endDateArr[0];
+
+	var last30DayEpoch = moment(moment().subtract(29, 'days').format('YYYY-MM-DD')).unix();
+	var startDateEpoch = moment(ieodDateArr[0].trim(), "DD-MM-YYYY").unix();
+	var endDateEpoch = moment(ieodDateArr[1].trim(), "DD-MM-YYYY").unix();
+
+	if(startDateEpoch < last30DayEpoch || endDateEpoch < last30DayEpoch) {
+		alert("You can't select the date more than last 30 days");
+		return false;
+	}
 
 	$.ajax({
 		type: "POST",

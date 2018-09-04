@@ -27,7 +27,7 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand">
+                <li class="sidebar-brand" data-block-id="authentication">
                     <a href="#">
                         <h3>iDarts</h3>
                     </a>
@@ -58,7 +58,7 @@
             		<div class="col-md-6">
             			<div class="block" id="authentication">
             				<h4>Introduction to iDarts Market Data API</h4>
-			                <p>This is the sample PHP examples which explains how to connect the iDarts Market Data REST and Streaming API and get the response for different supported API's.  <a href="https://infini.tradeplusonline.com/api/documents" title="API Document">https://infini.tradeplusonline.com/api/documents</a>.</p>
+			                <p>This is the sample PHP examples which explains how to connect the iDarts Market Data REST and Streaming API and get the response for different supported API's.</p>
 			                <p>Every API request needs to be authenticated with valid authentication key. You can get your authentication key using your account username and password.</p>
 
 						    <span id="authenticateBtn" onclick="getAuthentication()"><a href="#" class="btn btn-success">Get Authentication Key</a></span>
@@ -76,11 +76,11 @@
 			                <div>
 			                	<b>Select the Tokens</b>
 			                	<select id="token1" multiple="multiple">
-								    <option value="1015083">1015083</option>
-								    <option value="1000236">1000236</option>
-								    <option value="1005900">1005900</option>
-								    <option value="1016669">1016669</option>
-								    <option value="1016675">1016675</option>
+								    <option value="1015083">ADANIPORTS<1015083></option>
+								    <option value="1000236">ASIANPAINT<1000236></option>
+								    <option value="1005900">AXISBANK<1005900></option>
+								    <option value="1016669">BAJAJ-AUTO<1016669></option>
+								    <option value="1016675">BAJAJFINSV<1016675></option>
 								</select>
 			            	</div><BR>
 						    <a href="#" class="btn btn-success" onclick="getSnapshotQuote()">List Quotes</a>
@@ -104,11 +104,11 @@
 									<div class="form-group">
 								    	<label for="eodToken"><b>Select the Token</b></label>
 								    	<select id="eodToken" class="form-control form-control-sm">
-										    <option value="1015083">1015083</option>
-										    <option value="1000236">1000236</option>
-										    <option value="1005900">1005900</option>
-										    <option value="1016669">1016669</option>
-										    <option value="1016675">1016675</option>
+										    <option value="1015083">ADANIPORTS<1015083></option>
+										    <option value="1000236">ASIANPAINT<1000236></option>
+										    <option value="1005900">AXISBANK<1005900></option>
+										    <option value="1016669">BAJAJ-AUTO<1016669></option>
+										    <option value="1016675">BAJAJFINSV<1016675></option>
 										</select>
 								  	</div>
 									<!-- <div class="form-group">
@@ -150,11 +150,11 @@ t=1000022</a>.</p>
 									<div class="form-group">
 								    	<label for="ieodToken"><b>Select the Token</b></label>
 								    	<select id="ieodToken" class="form-control form-control-sm">
-										    <option value="1015083">1015083</option>
-										    <option value="1000236">1000236</option>
-										    <option value="1005900">1005900</option>
-										    <option value="1016669">1016669</option>
-										    <option value="1016675">1016675</option>
+										    <option value="1015083">ADANIPORTS<1015083></option>
+										    <option value="1000236">ASIANPAINT<1000236></option>
+										    <option value="1005900">AXISBANK<1005900></option>
+										    <option value="1016669">BAJAJ-AUTO<1016669></option>
+										    <option value="1016675">BAJAJFINSV<1016675></option>
 										</select>
 								  	</div>
 									<div class="form-group">
